@@ -23,8 +23,12 @@ docker build -t nginx-request-exporter .
 
 Run:
 ```
-docker run --rm -p 9514:9514 -p 9514:9514 nginx-request-exporter
+docker run --rm -p 9147:9147 -p 9514:9514 nginx-request-exporter
 ```
+
+## Docker Compose Example
+
+[docker-compose.yml](docker-compose.yml)
 
 ## Configuration
 
@@ -72,22 +76,13 @@ Currently, nginx-request-exporter has to be restarted when the log format is cha
 # TYPE nginx_request_exporter_syslog_parse_failure counter
 # HELP nginx_request_time Nginx request log value for time
 # TYPE nginx_request_time histogram
-# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
-# TYPE process_cpu_seconds_total counter
-# HELP process_max_fds Maximum number of open file descriptors.
-# TYPE process_max_fds gauge
-# HELP process_open_fds Number of open file descriptors.
-# TYPE process_open_fds gauge
-# HELP process_resident_memory_bytes Resident memory size in bytes.
-# TYPE process_resident_memory_bytes gauge
-# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
-# TYPE process_start_time_seconds gauge
-# HELP process_virtual_memory_bytes Virtual memory size in bytes.
-# TYPE process_virtual_memory_bytes gauge
-# HELP promhttp_metric_handler_requests_in_flight Current number of scrapes being served.
-# TYPE promhttp_metric_handler_requests_in_flight gauge
-# HELP promhttp_metric_handler_requests_total Total number of scrapes by HTTP status code.
-# TYPE promhttp_metric_handler_requests_total counter
+
+# HELP nginx_request_time_bucket
+# TYPE nginx_request_time_bucket counter
+# HELP nginx_request_time_sum
+# TYPE nginx_request_time_sum counter
+# HELP nginx_request_time_count
+# TYPE nginx_request_time_count counter
 ```
 
 How to get all metrics:

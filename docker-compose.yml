@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 3000:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx-request-exporter.conf
+
+  nginx-request-exporter:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - 9147:9147
+      - 9514:9514/udp
